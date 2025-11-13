@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snippet Keeper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Snippet Keeper</h1>
+    <div class="actions">
+      <button id="newFolderBtn">New Folder</button>
+      <button id="newSnippetBtn">New Snippet</button>
+      <button id="exportBtn">Export</button>
+      <label class="import-label">
+        <input type="file" id="importInput" accept="application/json" />
+        Import
+      </label>
+    </div>
+  </header>
+  <main>
+    <section id="foldersSection">
+      <h2>Folders</h2>
+      <div id="folderTree" class="scrollable"></div>
+    </section>
+    <section id="snippetsSection">
+      <div class="snippets-header">
+        <h2 id="currentFolderName">Snippets</h2>
+        <button id="renameFolderBtn" class="secondary">Rename Folder</button>
+        <button id="deleteFolderBtn" class="danger">Delete Folder</button>
+      </div>
+      <div id="snippetsList" class="scrollable"></div>
+    </section>
+    <section id="editorSection">
+      <h2>Snippet Editor</h2>
+      <form id="snippetForm">
+        <label>
+          Title
+          <input type="text" id="snippetTitle" required />
+        </label>
+        <label>
+          Content
+          <textarea id="snippetContent" rows="12" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" id="saveSnippetBtn">Save Changes</button>
+          <button type="button" id="copySnippetBtn" class="secondary">Copy to Clipboard</button>
+          <button type="button" id="deleteSnippetBtn" class="danger">Delete Snippet</button>
+        </div>
+      </form>
+      <p id="statusMessage" role="status"></p>
+    </section>
+  </main>
+  <template id="folderTemplate">
+    <div class="folder-item">
+      <button class="folder-button"></button>
+      <div class="folder-children"></div>
+    </div>
+  </template>
+  <template id="snippetTemplate">
+    <div class="snippet-item">
+      <button class="snippet-button"></button>
+      <span class="snippet-updated"></span>
+    </div>
+  </template>
+  <script src="app.js"></script>
+</body>
+</html>
