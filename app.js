@@ -44,6 +44,22 @@ const importInput = document.getElementById("importInput");
 
 let state = loadState();
 
+function ensureValidSelection() {
+  if (!state.folders[state.selectedFolderId]) {
+    state.selectedFolderId = state.rootFolderId;
+  }
+
+  const currentFolder = state.folders[state.selectedFolderId];
+  if (currentFolder) {
+    currentFolder.snippetIds = currentFolder.snippetIds.filter((id) => state.snippets[id]);
+  }
+
+  const selectedSnippet = state.snippets[state.selectedSnippetId];
+  if (!selectedSnippet || selectedSnippet.folderId !== state.selectedFolderId) {
+    state.selectedSnippetId = currentFolder?.snippetIds.find((id) => state.snippets[id]) ?? null;
+  }
+}
+
 function loadState() {
   try {
     const raw = localStorage.getItem(storageKey);
@@ -96,6 +112,7 @@ function setStatus(message, isError = false) {
 }
 
 function render() {
+  ensureValidSelection();
   renderFolderTree();
   renderSnippetList();
   renderEditor();
