@@ -180,6 +180,8 @@ textarea {
   font-size: 1rem;
   font-family: inherit;
   background: #f9fafb;
+  color: #0f172a;
+  caret-color: #0f172a;
 }
 
 textarea {
@@ -341,7 +343,8 @@ body.dark input[type="text"],
 body.dark textarea {
   background: #0f172a;
   border-color: #334155;
-  color: inherit;
+  color: #e2e8f0;
+  caret-color: #e2e8f0;
 }
 
 body.dark #statusMessage {
